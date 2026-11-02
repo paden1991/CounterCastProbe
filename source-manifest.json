@@ -1,0 +1,31 @@
+{
+  "addon": "CounterCastProbe",
+  "version": "0.1.8-experimental",
+  "interface": 16001,
+  "files": [
+    {
+      "path": "Abilities.lua",
+      "bytes": 3026,
+      "sha256": "fb40d4ddcb41943f56a5be9db59ab7e87b7cb7736248cdefbf26ed3173911b9b",
+      "external": false
+    },
+    {
+      "path": "CounterCastProbe.toc",
+      "bytes": 377,
+      "sha256": "6e1b8f8ea01767f72295b2c13ab835761a54713cffdf0e87b979b991ff13e948",
+      "external": false
+    },
+    {
+      "path": "MacroActions.lua",
+      "bytes": 3595,
+      "sha256": "e8cb233f682c4daf89b57f71e2248477aaaeb9160e78648ca94bf2846b4c1479",
+      "external": false
+    },
+    {
+      "path": "Probe.lua",
+      "bytes": 26406,
+      "sha256": "2bb9f6abfa0da666b85f1df8daa6a3fe115a7aa3d8d95f1bcafd4f45772877cb",
+      "external": false
+    }
+  ]
+}

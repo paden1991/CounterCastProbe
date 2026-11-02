@@ -1,0 +1,12 @@
+## Interface: 16001
+## Title: CounterCast Probe
+## Notes: Opt-in experiment for clickable interrupts anchored to the nameplate root.
+## Author: Paden
+## Version: 0.1.8-experimental
+## SavedVariables: CounterCastProbeDB
+## SavedVariablesPerCharacter: CounterCastProbeCharacterDB
+## IconTexture: Interface\Icons\Ability_Kick
+
+Abilities.lua
+MacroActions.lua
+Probe.lua
