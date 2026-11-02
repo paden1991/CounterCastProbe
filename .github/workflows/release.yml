@@ -1,5 +1,11 @@
 name: Publish WowUp Forever release
 on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing reviewed version tag to publish
+        required: true
+        type: string
   push:
     tags: ['v*']
 permissions:
@@ -7,14 +13,17 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
       - name: Verify and package reviewed runtime
-        run: python3 tools/build_release.py
+        run: GITHUB_REF_NAME="$TAG" python3 tools/build_release.py
       - name: Publish installable assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ github.ref_name }}
         run: |
           prerelease_args=()
           if [[ "$TAG" == *-* ]]; then prerelease_args+=(--prerelease); fi
