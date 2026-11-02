@@ -1,0 +1,21 @@
+name: Publish WowUp Forever release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and package reviewed runtime
+        run: python3 tools/build_release.py
+      - name: Publish installable assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          prerelease_args=()
+          if [[ "$TAG" == *-* ]]; then prerelease_args+=(--prerelease); fi
+          gh release create "$TAG" dist/*-forever.zip dist/release.json dist/SHA256SUMS.txt --verify-tag --title "$TAG - WoW Forever" --notes-file RELEASE_NOTES.md "${prerelease_args[@]}"

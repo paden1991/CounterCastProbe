@@ -7,6 +7,12 @@ Opt-in experimental nameplate interaction probe for CounterCast.
 Experimental diagnostic addon; opt in deliberately and keep it separate from CounterCast.
 
 
+## WowUp installation and publishing
+
+Select WoW Forever in WowUp, choose **Install from URL**, and enter `https://github.com/paden1991/CounterCastProbe` (without `.git`). Use the attached `-forever.zip` from [GitHub Releases](https://github.com/paden1991/CounterCastProbe/releases), not the automatic Source code ZIP. Current versions remain prereleases; use the Beta channel if your manager asks.
+
+Future `v<version>` tags trigger `.github/workflows/release.yml`. Update the TOC version and reviewed `source-manifest.json` hashes, run `python tools/build_release.py`, commit, then push the matching version tag. The workflow verifies all source hashes and TOC entries, packages one addon folder, and publishes the ZIP, Forever metadata and SHA-256 checksum. A tag/version mismatch or missing runtime file stops publication.
+
 ## Installation
 
 Copy the `CounterCastProbe` folder into your WoW Forever `Interface/AddOns` directory, then restart or reload the client. Alternatively, run `python tools/build_local.py` to create an installable ZIP under `dist/`.
